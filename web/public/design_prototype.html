@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ExoticDrive Design Prototype</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .font-serif { font-family: 'Playfair Display', serif; }
+        .transition-theme { transition: all 0.5s ease; }
+        .hide { display: none; }
+    </style>
+</head>
+<body id="body" class="transition-theme bg-[#0a0a0a] text-[#e5e5e5]">
+    
+    <!-- Theme Selector (Fixed) -->
+    <div class="fixed bottom-6 right-6 z-[100] flex flex-col gap-2 p-3 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 shadow-2xl">
+        <p class="text-[10px] uppercase tracking-widest text-center mb-2 opacity-50 text-white font-bold">Choisir le thème</p>
+        <button onclick="setTheme('heritage')" class="px-4 py-2 rounded-lg text-xs font-bold transition-all bg-[#D4AF37] text-black">Héritage & Luxe</button>
+        <button onclick="setTheme('atelier')" class="px-4 py-2 rounded-lg text-xs font-bold transition-all bg-[#333] text-white opacity-60">Atelier Moderne</button>
+        <button onclick="setTheme('performance')" class="px-4 py-2 rounded-lg text-xs font-bold transition-all bg-[#E10600] text-white opacity-60">Passion & Performance</button>
+    </div>
+
+    <!-- Navbar -->
+    <nav id="navbar" class="fixed top-0 w-full z-50 px-6 py-4 flex justify-between items-center transition-all duration-300 border-b border-[#D4AF37]/30 bg-[#0a0a0a] bg-opacity-90 backdrop-blur-md">
+        <div class="text-2xl font-bold tracking-tighter text-[#D4AF37] font-serif">
+            EXOTIC<span class="text-[#e5e5e5]">DRIVE</span>
+        </div>
+        <div class="hidden md:flex gap-8 items-center text-xs uppercase tracking-widest font-medium text-[#e5e5e5]">
+            <a href="#" onclick="setView('landing')" class="hover:opacity-70 transition-opacity">Accueil</a>
+            <a href="#" onclick="setView('catalog')" class="hover:opacity-70 transition-opacity">Véhicules</a>
+            <a href="#" class="hover:opacity-70 transition-opacity">Devenir Propriétaire</a>
+        </div>
+        <div class="flex items-center gap-4 text-[#e5e5e5]">
+            <div class="w-5 h-5 cursor-pointer hover:opacity-70">👤</div>
+            <div class="md:hidden w-6 h-6 cursor-pointer">☰</div>
+        </div>
+    </nav>
+
+    <!-- Landing Page -->
+    <div id="view-landing" class="view">
+        <section class="relative h-screen flex items-center justify-center overflow-hidden">
+            <div class="absolute inset-0 z-0 opacity-60">
+                <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&q=80&w=1600" class="w-full h-full object-cover" alt="Hero">
+                <div class="absolute inset-0 bg-[#0a0a0a] opacity-40"></div>
+            </div>
+            <div class="relative z-10 text-center px-6 max-w-4xl">
+                <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight text-[#e5e5e5] font-serif">
+                    L'art de conduire <br/> <span class="text-[#D4AF37]">l'exception</span>
+                </h1>
+                <p class="text-lg md:text-xl mb-10 max-w-2xl mx-auto opacity-80 text-[#e5e5e5]">
+                    Réservez des véhicules iconiques pour vos moments les plus précieux. <br/> 
+                    Une expérience automobile unique sur la Côte d'Azur.
+                </p>
+                <button onclick="setView('catalog')" class="px-8 py-4 rounded-full font-bold uppercase tracking-widest transition-all transform hover:scale-105 bg-[#D4AF37] text-black">
+                    Réserver une voiture
+                </button>
+            </div>
+        </section>
+        <section class="py-20 px-6 bg-[#0a0a0a]">
+            <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-12 text-center">
+                <div class="flex flex-col items-center">
+                    <div class="p-4 rounded-full mb-6 bg-[#1a1a1a] border border-[#D4AF37]/30 text-[#D4AF37]">🛡️</div>
+                    <h3 class="text-xl font-bold mb-3 text-[#e5e5e5] font-serif">Sûreté Absolue</h3>
+                    <p class="opacity-60 text-[#e5e5e5]">Vérification rigoureuse des propriétaires et assurance premium incluse.</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="p-4 rounded-full mb-6 bg-[#1a1a1a] border border-[#D4AF37]/30 text-[#D4AF37]">⭐</div>
+                    <h3 class="text-xl font-bold mb-3 text-[#e5e5e5] font-serif">Collection Rare</h3>
+                    <p class="opacity-60 text-[#e5e5e5]">Accès privilégié à des modèles iconiques et sportives d'exception.</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="p-4 rounded-full mb-6 bg-[#1a1a1a] border border-[#D4AF37]/30 text-[#D4AF37]">⏱️</div>
+                    <h3 class="text-xl font-bold mb-3 text-[#e5e5e5] font-serif">Simplicité</h3>
+                    <p class="opacity-60 text-[#e5e5e5]">Réservation rapide, paiement sécurisé, expérience sans couture.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Catalog Page -->
+    <div id="view-catalog" class="view hide pt-24 pb-20 px-6 bg-[#0a0a0a]">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+                <div>
+                    <h2 class="text-4xl font-bold text-[#e5e5e5] font-serif">Notre Collection</h2>
+                    <p class="opacity-60 mt-2 text-[#e5e5e5]">Sélectionnez le véhicule qui accompagnera votre expérience.</p>
+                </div>
+                <div class="flex gap-4 text-[#e5e5e5]">
+                    <button class="px-4 py-2 rounded-full text-xs uppercase tracking-widest border border-[#D4AF37]/30 bg-[#D4AF37] text-black font-bold">Toutes</button>
+                    <button class="px-4 py-2 rounded-full text-xs uppercase tracking-widest border border-[#D4AF37]/30 opacity-60 hover:opacity-100 transition-opacity">Sport</button>
+                    <button class="px-4 py-2 rounded-full text-xs uppercase tracking-widest border border-[#D4AF37]/30 opacity-60 hover:opacity-100 transition-opacity">Classiques</button>
+                </div>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8" id="car-grid">
+                <!-- Cars injected by JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Booking Page -->
+    <div id="view-booking" class="view hide pt-24 pb-20 px-6 bg-[#0a0a0a]">
+        <div class="max-w-2xl mx-auto">
+            <button onclick="setView('catalog')" class="flex items-center gap-2 mb-8 text-sm opacity-60 hover:opacity-100 transition-opacity text-[#e5e5e5]">
+                ← Retour au catalogue
+            </button>
+            <div class="p-8 rounded-3xl bg-[#1a1a1a] border border-[#D4AF37]/30 shadow-xl">
+                <div id="selected-car-info" class="flex items-center gap-6 mb-8">
+                    <!-- Info injected by JS -->
+                </div>
+                <div class="flex justify-between mb-12 relative">
+                    <div class="absolute top-1/2 left-0 w-full h-0.5 bg-gray-800 -translate-y-1/2 z-0"></div>
+                    <div id="step-1" class="relative z-10 w-10 h-10 rounded-full flex items-center justify-center font-bold bg-[#D4AF37] text-black">1</div>
+                    <div id="step-2" class="relative z-10 w-10 h-10 rounded-full flex items-center justify-center font-bold bg-gray-800 text-gray-500">2</div>
+                    <div id="step-3" class="relative z-10 w-10 h-10 rounded-full flex items-center justify-center font-bold bg-gray-800 text-gray-500">3</div>
+                </div>
+                <div id="booking-step-content">
+                    <!-- Step content injected by JS -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const MOCK_CARS = [
+            { id: 1, brand: 'Porsche', model: '911 Carrera S', year: 2023, category: 'Sport', price: '250€ / h', image: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&q=80&w=800', rating: 4.9 },
+            { id: 2, brand: 'Mercedes-Benz', model: '300 SL Gullwing', year: 1954, category: 'Classic', price: '400€ / h', image: 'https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&q=80&w=800', rating: 5.0 },
+            { id: 3, brand: 'Ferrari', model: 'F40', year: 1987, category: 'Iconic', price: '600€ / h', image: 'https://images.unsplash.com/photo-1592198084033-a99a5f2a6a6e?auto=format&fit=crop&q=80&w=800', rating: 5.0 }
+        ];
+
+        let currentView = 'landing';
+        let currentStep = 1;
+        let selectedCar = null;
+
+        function setView(view) {
+            document.querySelectorAll('.view').forEach(v => v.classList.add('hide'));
+            document.getElementById('view-' + view).classList.remove('hide');
+            currentView = view;
+            if (view === 'catalog') renderCars();
+        }
+
+        function renderCars() {
+            const grid = document.getElementById('car-grid');
+            grid.innerHTML = MOCK_CARS.map(car => `
+                <div onclick="openBooking(${car.id})" class="group cursor-pointer transition-all duration-300 bg-[#1a1a1a] border border-[#D4AF37]/30 rounded-2xl overflow-hidden hover:shadow-2xl hover:-translate-y-1">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="${car.image}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="${car.model}">
+                        <div class="absolute top-4 right-4 px-3 py-1 rounded-full text-xs font-bold bg-[#D4AF37] text-black">${car.category}</div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-[#e5e5e5] font-serif">${car.brand} ${car.model}</h3>
+                            <div class="flex items-center gap-1 text-sm text-[#e5e5e5]">⭐ ${car.rating}</div>
+                        </div>
+                        <p class="text-sm opacity-60 mb-6 text-[#e5e5e5]">Année ${car.year} • État Concours</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-lg font-bold text-[#D4AF37]">${car.price}</span>
+                            <div class="p-2 rounded-full bg-[#D4AF37] text-black transition-transform group-hover:rotate-12">→</div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function openBooking(carId) {
+            selectedCar = MOCK_CARS.find(c => c.id === carId);
+            currentStep = 1;
+            setView('booking');
+            renderBookingInfo();
+            renderBookingStep();
+        }
+
+        function renderBookingInfo() {
+            document.getElementById('selected-car-info').innerHTML = `
+                <img src="${selectedCar.image}" class="w-24 h-24 rounded-2xl object-cover" alt="${selectedCar.model}">
+                <div>
+                    <h2 class="text-2xl font-bold text-[#e5e5e5] font-serif">${selectedCar.brand} ${selectedCar.model}</h2>
+                    <p class="opacity-60 text-[#e5e5e5]">${selectedCar.price}</p>
+                </div>
+            `;
+        }
+
+        function renderBookingStep() {
+            const content = document.getElementById('booking-step-content');
+            
+            // Update dots
+            for(let i=1; i<=3; i++) {
+                const dot = document.getElementById('step-' + i);
+                if(i <= currentStep) {
+                    dot.className = 'relative z-10 w-10 h-10 rounded-full flex items-center justify-center font-bold bg-[#D4AF37] text-black';
+                } else {
+                    dot.className = 'relative z-10 w-10 h-10 rounded-full flex items-center justify-center font-bold bg-gray-800 text-gray-500';
+                }
+            }
+
+            if (currentStep === 1) {
+                content.innerHTML = `
+                    <div class="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-300">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="text-[#D4AF37]">📅</span>
+                            <h3 class="text-lg font-bold text-[#e5e5e5] font-serif">Quand souhaitez-vous réserver ?</h3>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="space-y-2">
+                                <label class="text-xs uppercase tracking-widest opacity-50 text-[#e5e5e5]">Date</label>
+                                <input type="date" class="w-full p-4 rounded-xl border border-[#D4AF37]/30 bg-[#0a0a0a] text-[#e5e5e5] outline-none focus:ring-2 focus:ring-[#D4AF37]">
+                            </div>
+                            <div class="space-y-2">
+                                <label class="text-xs uppercase tracking-widest opacity-50 text-[#e5e5e5]">Heure</label>
+                                <input type="time" class="w-full p-4 rounded-xl border border-[#D4AF37]/30 bg-[#0a0a0a] text-[#e5e5e5] outline-none focus:ring-2 focus:ring-[#D4AF37]">
+                            </div>
+                        </div>
+                        <button onclick="nextStep()" class="w-full py-4 rounded-xl font-bold uppercase tracking-widest transition-all bg-[#D4AF37] text-black">Continuer</button>
+                    </div>
+                `;
+            } else if (currentStep === 2) {
+                content.innerHTML = `
+                    <div class="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-300">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="text-[#D4AF37]">📍</span>
+                            <h3 class="text-lg font-bold text-[#e5e5e5] font-serif">Lieux du trajet</h3>
+                        </div>
+                        <div class="space-y-4">
+                            <input placeholder="Lieu de départ" class="w-full p-4 rounded-xl border border-[#D4AF37]/30 bg-[#0a0a0a] text-[#e5e5e5] outline-none focus:ring-2 focus:ring-[#D4AF37]">
+                            <input placeholder="Destination" class="w-full p-4 rounded-xl border border-[#D4AF37]/30 bg-[#0a0a0a] text-[#e5e5e5] outline-none focus:ring-2 focus:ring-[#D4AF37]">
+                        </div>
+                        <div class="flex gap-4">
+                            <button onclick="prevStep()" class="flex-1 py-4 rounded-xl font-bold opacity-60 text-[#e5e5e5] border border-[#D4AF37]/30">Retour</button>
+                            <button onclick="nextStep()" class="flex-[2] py-4 rounded-xl font-bold uppercase tracking-widest bg-[#D4AF37] text-black">Confirmer</button>
+                        </div>
+                    </div>
+                `;
+            } else {
+                content.innerHTML = `
+                    <div class="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-300">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="text-[#D4AF37]">🛡️</span>
+                            <h3 class="text-lg font-bold text-[#e5e5e5] font-serif">Confirmation</h3>
+                        </div>
+                        <div class="p-4 rounded-2xl bg-[#1a1a1a] border border-[#D4AF37]/30 space-y-3">
+                            <div class="flex justify-between text-sm">
+                                <span class="opacity-50">Véhicule</span>
+                                <span class="text-[#e5e5e5]">${selectedCar.model}</span>
+                            </div>
+                            <div class="flex justify-between text-sm border-t border-white/10 pt-3 mt-3">
+                                <span class="font-bold">Total Estimé</span>
+                                <span class="font-bold text-lg text-[#D4AF37]">450.00 €</span>
+                            </div>
+                        </div>
+                        <button onclick="alert('Demande envoyée !')" class="w-full py-4 rounded-xl font-bold uppercase tracking-widest bg-[#D4AF37] text-black">Envoyer la demande</button>
+                    </div>
+                `;
+            }
+        }
+
+        function nextStep() { currentStep++; renderBookingStep(); }
+        function prevStep() { currentStep--; renderBookingStep(); }
+
+        function setTheme(theme) {
+            const body = document.getElementById('body');
+            const nav = document.getElementById('navbar');
+            
+            if (theme === 'heritage') {
+                body.className = 'transition-theme bg-[#0a0a0a] text-[#e5e5e5]';
+                nav.className = 'fixed top-0 w-full z-50 px-6 py-4 flex justify-between items-center transition-all duration-300 border-b border-[#D4AF37]/30 bg-[#0a0a0a] bg-opacity-90 backdrop-blur-md';
+                // ... update other elements ...
+            } else if (theme === 'atelier') {
+                body.className = 'transition-theme bg-[#fdfdfd] text-[#1a1a1a]';
+                nav.className = 'fixed top-0 w-full z-50 px-6 py-4 flex justify-between items-center transition-all duration-300 border-b border-gray-200 bg-white bg-opacity-90 backdrop-blur-md';
+            } else if (theme === 'performance') {
+                body.className = 'transition-theme bg-[#111111] text-white';
+                nav.className = 'fixed top-0 w-full z-50 px-6 py-4 flex justify-between items-center transition-all duration-300 border-b border-[#E10600]/30 bg-[#111111] bg-opacity-90 backdrop-blur-md';
+            }
+        }
+
+        setView('landing');
+    </script>
+</body>
+</html>
